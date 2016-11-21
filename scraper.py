@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+#scrapes Ball State's website for URL's and title changes
 def links(max_pages):
         page = 1
         while page <= max_pages:
@@ -9,12 +9,17 @@ def links(max_pages):
                 pt = source_code.text
                 soup = BeautifulSoup(pt, "html.parser")
                 for link in soup.find_all('a'):
-                        href = link.get('href')
-                        #print(href)
-                        #get_data(href)
+                        try:
+                                href = link.get('href')
+                                href2 = 'http://cms.bsu.edu' + link.get('href')
+                                #print(href)
+                                print(href2)
+                                #get_data(href)
+                        except:
+                                continue
                 for link in soup.find_all('title'):
                         head = link.get('title')
-                        print(head)
+                        #print(head)
                 page += 1
 
 #Need a function to gather page meta data and the urls
@@ -23,8 +28,10 @@ def get_data(data_url):
         source_code = requests.get(data_url)
         pt = source_code.text
         soup = BeautifulSoup(pt, "html.parser")
-        for alllinks in soup.find_all("a"):
-                print(alllinks.string)
-        #for alllinks in soup.find_all("a"):
+        for link in soup.find_all("a"):
+                try:
+                         href = link.get('href') #build the full version of the link
+                except:
+                        continue
 
 links(1)

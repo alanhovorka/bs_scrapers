@@ -1,3 +1,4 @@
+#WIP
 import requests
 from bs4 import BeautifulSoup
 #scrapes Ball State's website for URL's and title changes

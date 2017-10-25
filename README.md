@@ -1,2 +1,2 @@
 # bs_scrapers
-A collection of BeautifulSoup scrapers I've written.
+A collection of BeautifulSoup and Selenium scrapers I've written.
